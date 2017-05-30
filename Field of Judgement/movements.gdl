@@ -1,0 +1,71 @@
+//-----------------------------------------------------------
+//Field Of Judgement, Copyright (C) 2014 Tomasz Hachaj, Ph.D
+//All rights reserved.  Email: tomekhachaj@o2.pl   Web: http://www.cci.up.krakow.pl
+//The purpose of this application is to demnostrate how to use
+//Gesture Descrption Language (GDL) as natural user interface for
+//computer games and other systems.
+//-----------------------------------------------------------
+
+
+//-------------Movements-------------------------------------
+RULE distance(spine.xyz[0],[0,0,0]) < 2200 THEN ToNear!
+
+RULE Head.y[0] < HandLeft.y[0] THEN LeftHandOverHead
+
+RULE spine.y[0] - spine.y[1] > 10 THEN MoveUp
+RULE rulepersists(MoveUp, 0.3, 0.5) THEN Jump!
+
+RULE 90 - angle(ShoulderRight.xyz[0] - ShoulderLEFT.xyz[0], [0,0,1]) >= 15 & (90 - angle(ShoulderRight.xyz[0] - ShoulderLEFT.xyz[0], [0,0,1]) >= 15 & 90 - angle(ShoulderRight.xyz[0] - ShoulderLEFT.xyz[0], [0,0,1]) < 35) THEN Rights1!
+RULE 90 - angle(ShoulderRight.xyz[0] - ShoulderLEFT.xyz[0], [0,0,1]) >= 15 & (90 - angle(ShoulderRight.xyz[0] - ShoulderLEFT.xyz[0], [0,0,1]) >= 35 & 90 - angle(ShoulderRight.xyz[0] - ShoulderLEFT.xyz[0], [0,0,1]) < 55) THEN Rights2!
+RULE 90 - angle(ShoulderRight.xyz[0] - ShoulderLEFT.xyz[0], [0,0,1]) >= 15 & (90 - angle(ShoulderRight.xyz[0] - ShoulderLEFT.xyz[0], [0,0,1]) >= 55) THEN Rights3!
+
+RULE 90 - angle(ShoulderRight.xyz[0] - ShoulderLEFT.xyz[0], [0,0,1]) <= -15 & (90 - angle(ShoulderRight.xyz[0] - ShoulderLEFT.xyz[0], [0,0,1]) <= -15 & 90 - angle(ShoulderRight.xyz[0] - ShoulderLEFT.xyz[0], [0,0,1]) > -35) THEN Lefts1!
+RULE 90 - angle(ShoulderRight.xyz[0] - ShoulderLEFT.xyz[0], [0,0,1]) <= -15 & (90 - angle(ShoulderRight.xyz[0] - ShoulderLEFT.xyz[0], [0,0,1]) <= -35 & 90 - angle(ShoulderRight.xyz[0] - ShoulderLEFT.xyz[0], [0,0,1]) > -55) THEN Lefts2!
+RULE 90 - angle(ShoulderRight.xyz[0] - ShoulderLEFT.xyz[0], [0,0,1]) <= -15 & (90 - angle(ShoulderRight.xyz[0] - ShoulderLEFT.xyz[0], [0,0,1]) <= -55) THEN Lefts3!
+
+//-------------Walking-------------------------------------
+
+RULE KneeRight.y[0] - KneeRight.y[1] > 0 THEN RightKneeUp
+RULE KneeLeft.y[0] - KneeLeft.y[1] > 0 THEN LeftKneeUp
+
+RULE angle(HipRight.xyz[0] - KneeRight.xyz[0],  AnkleRight.xyz[0] - KneeRight.xyz[0]) > 150 & angle(HipLeft.xyz[0] - KneeLeft.xyz[0],  AnkleLeft.xyz[0] - KneeLeft.xyz[0]) > 150 THEN WalkingStart
+RULE angle(HipRight.xyz[0] - KneeRight.xyz[0],  AnkleRight.xyz[0] - KneeRight.xyz[0]) > 150 & angle(HipLeft.xyz[0] - KneeLeft.xyz[0],  AnkleLeft.xyz[0] - KneeLeft.xyz[0]) < 150 & RulePersists(LeftKneeUp, 0.25, 0.5) THEN WalkingLeft
+RULE angle(HipRight.xyz[0] - KneeRight.xyz[0],  AnkleRight.xyz[0] - KneeRight.xyz[0]) < 150 & angle(HipLeft.xyz[0] - KneeLeft.xyz[0],  AnkleLeft.xyz[0] - KneeLeft.xyz[0]) > 150 & RulePersists(RightKneeUp, 0.25, 0.5) THEN WalkingRight
+
+RULE WalkingStart & sequenceexists("[WalkingLeft,0.5][WalkingStart,0.5]") THEN WalkingStepOne1
+RULE WalkingStart & sequenceexists("[WalkingRight,0.5][WalkingStart,0.5]") THEN WalkingStepOne2
+
+RULE (WalkingStepOne1 | WalkingStepOne2) & LeftHandOverHead THEN WalkingBack!
+RULE (WalkingStepOne1 | WalkingStepOne2) & not(LeftHandOverHead) THEN Walking!
+
+//-------------Running-------------------------------------
+
+RULE angle(HipRight.xyz[0] - KneeRight.xyz[0],  AnkleRight.xyz[0] - KneeRight.xyz[0]) > 130 THEN WalkingRight1f
+RULE angle(HipRight.xyz[0] - KneeRight.xyz[0],  AnkleRight.xyz[0] - KneeRight.xyz[0]) < 130 THEN WalkingRight2f
+RULE angle(HipLeft.xyz[0] - KneeLeft.xyz[0],  AnkleLeft.xyz[0] - KneeLeft.xyz[0]) > 130 THEN WalkingLeft1f
+RULE angle(HipLeft.xyz[0] - KneeLeft.xyz[0],  AnkleLeft.xyz[0] - KneeLeft.xyz[0]) < 130 THEN WalkingLeft2f
+
+RULE WalkingRight1f & sequenceexists("[WalkingRight2f,0.25][WalkingRight1f,0.25]") THEN WalkingStepOne1f
+RULE WalkingLeft1f & sequenceexists("[WalkingLeft2f,0.25][WalkingLeft1f,0.25]") THEN WalkingStepOne2f
+
+RULE (WalkingStepOne1f | WalkingStepOne2f) & LeftHandOverHead THEN WalkingFBack!
+RULE (WalkingStepOne1f | WalkingStepOne2f) & not(LeftHandOverHead) THEN WalkingF!
+
+//-------------Cast spell 0-------------------------------------
+RULE angle(ShoulderRight.xyz[0] - ElbowRight.xyz[0],  WristRight.xyz[0] - ElbowRight.xyz[0]) < 100 THEN BeginCasting0
+RULE WristRight.y[0] > Spine.y[0] & angle(ShoulderRight.xyz[0] - ElbowRight.xyz[0],  WristRight.xyz[0] - ElbowRight.xyz[0]) > 150 & HandLeft.y[0] < Spine.y[0] THEN EndCasting0
+RULE EndCasting0 & sequenceexists("[BeginCasting0,0.75]") THEN CastSpell0
+RULE CastSpell0 & sequenceexists("[!CastSpell0,0.5]") then CastSpell0!
+
+//-------------Cast spell 1-------------------------------------
+
+RULE angle(ShoulderRight.xyz[0] - ElbowRight.xyz[0],  WristRight.xyz[0] - ElbowRight.xyz[0]) < 100 & angle(ShoulderLeft.xyz[0] - ElbowLeft.xyz[0],  WristLeft.xyz[0] - ElbowLeft.xyz[0]) < 100 THEN BeginCasting1
+RULE WristRight.y[0] > Spine.y[0] & WristLeft.y[0] > Spine.y[0] & angle(ShoulderRight.xyz[0] - ElbowRight.xyz[0],  WristRight.xyz[0] - ElbowRight.xyz[0]) > 150 & angle(ShoulderLeft.xyz[0] - ElbowLeft.xyz[0],  WristLeft.xyz[0] - ElbowLeft.xyz[0]) > 150 THEN EndCasting1
+RULE EndCasting1 & sequenceexists("[BeginCasting1,0.75]") THEN CastSpell1
+RULE CastSpell1 & sequenceexists("[!CastSpell1,0.5]") then CastSpell1!
+
+//-------------Cast spell 2-------------------------------------
+RULE distance(HandRight.xyz[0],HandLeft.xyz[0]) > 200 THEN HandsSeparete
+RULE distance(HandRight.xyz[0],HandLeft.xyz[0]) < 200 THEN HandsTogether
+RULE HandsSeparete & SequenceExists("[HandsTogether,0.5][HandsSeparete,0.3]") & HandRight.y[0] > Head.y[0] & HandLeft.y[0] > Head.y[0] THEN CastSpell2
+RULE CastSpell2 & sequenceexists("[!CastSpell2,0.5]") then CastSpell2!

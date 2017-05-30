@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5EB96E05-373F-4278-929A-5ADCCEC1F9C7}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FieldOfJudgement</RootNamespace>
+    <AssemblyName>Field of Judgement</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GDL_KSDK_SIN_A, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\GDL_KSDK_SIN_A.dll</HintPath>
+    </Reference>
+    <Reference Include="Jitter">
+      <HintPath>..\assemblies\Jitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Kinect, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="OpenTK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\assemblies\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="SimplexNoise, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\SimplexNoise.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Conversion.cs" />
+    <Compile Include="GameConf.cs" />
+    <Compile Include="Enviroment\BrickWall.cs" />
+    <Compile Include="Enviroment\DeathBodyFragment.cs" />
+    <Compile Include="Enviroment\Ground.cs" />
+    <Compile Include="Enviroment\FieldBorder.cs" />
+    <Compile Include="Enviroment\MedievalPatternWall.cs" />
+    <Compile Include="Enviroment\Pillar.cs" />
+    <Compile Include="Enviroment\ReflectingWall.cs" />
+    <Compile Include="Enviroment\RenderableRigidBody.cs" />
+    <Compile Include="Enviroment\StoneWall.cs" />
+    <Compile Include="Enviroment\WoodenCrate.cs" />
+    <Compile Include="GameMap.cs" />
+    <Compile Include="Magic\Fireabll.cs" />
+    <Compile Include="CharacterController.cs" />
+    <Compile Include="DrawStuffOtk.cs" />
+    <Compile Include="KeyboardHost.cs" />
+    <Compile Include="Magic\ForceField.cs" />
+    <Compile Include="Magic\MagicBullet.cs" />
+    <Compile Include="Magic\MagicMissile.cs" />
+    <Compile Include="Magic\SpellFactory.cs" />
+    <Compile Include="MyTextWriter.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="PlayerModelBlock.cs" />
+    <Compile Include="PlayerModel.cs" />
+    <Compile Include="FieldOfJudgementGame.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RedScreen.cs" />
+    <Compile Include="SensorHost.cs" />
+    <Compile Include="Sound\Audio.cs" />
+    <Compile Include="Sound\Music.cs" />
+    <Compile Include="StartClass.cs" />
+    <Compile Include="StartScreen.cs" />
+    <Compile Include="Texture.cs" />
+    <Compile Include="TextureLoader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\checkered.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\grass.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\sky.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\wood.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\reflectingwall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\brick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\stonewall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\lava.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\mossfloor2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\forcefield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\fireball_core.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\fireball.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\magicmissle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\stats.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Music\IntoTheCube.wav" />
+    <EmbeddedResource Include="Resources\Sounds\forcefield.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sounds\fireball.wav" />
+    <EmbeddedResource Include="Resources\Sounds\magicmissle.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sounds\womandeath.wav" />
+    <EmbeddedResource Include="Resources\Sounds\womanhit.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sounds\hit.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\flesh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Music\SavageGround.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\start_screen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\credits.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sounds\nomana.wav" />
+    <EmbeddedResource Include="Resources\Sounds\spellhitborder.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Models\Sorceress\belly_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\belly_bottom.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\belly_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\belly_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\belly_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\belly_top.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\chest_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\chest_bottom.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\chest_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\chest_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\chest_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\chest_top.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\data.xml" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\hat_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\hat_bottom.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\hat_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\hat_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\hat_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\hat_top.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\head_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\head_bottom.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\head_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\head_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\head_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\head_top.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\hips_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\hips_bottom.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\hips_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\hips_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\hips_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\hips_top.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftElbow_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftElbow_bottom.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftElbow_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftElbow_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftElbow_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftElbow_top.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftFoot_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftFoot_bottom.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftFoot_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftFoot_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftFoot_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftFoot_top.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftHand_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftHand_bottom.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftHand_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftHand_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftHand_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftHand_top.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftHip_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftHip_bottom.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftHip_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftHip_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftHip_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftHip_top.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftKnee_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftKnee_bottom.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftKnee_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftKnee_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftKnee_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftKnee_top.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftShoulder_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftShoulder_bottom.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftShoulder_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftShoulder_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftShoulder_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\leftShoulder_top.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\neck_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\neck_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\neck_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\neck_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightElbow_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightElbow_bottom.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightElbow_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightElbow_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightElbow_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightElbow_top.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightFoot_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightFoot_bottom.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightFoot_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightFoot_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightFoot_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightFoot_top.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightHand_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightHand_bottom.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightHand_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightHand_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightHand_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightHand_top.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightHip_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightHip_bottom.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightHip_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightHip_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightHip_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightHip_top.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightKnee_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightKnee_bottom.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightKnee_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightKnee_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightKnee_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightKnee_top.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightShoulder_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightShoulder_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightShoulder_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightShoulder_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightShoulder_top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Models\checkered.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Models\Sorceress\rightShoulder_bottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dlls\GDL_KSDK_SIN_A.dll" />
+    <Content Include="Dlls\Jitter.dll" />
+    <Content Include="Dlls\OpenTK.dll" />
+    <Content Include="Dlls\SimplexNoise.dll" />
+    <Content Include="conf.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="favicon.ico" />
+    <Content Include="Resources\favicon.ico" />
+    <EmbeddedResource Include="Resources\mossfloor.png" />
+    <EmbeddedResource Include="Resources\medieval2.png" />
+    <EmbeddedResource Include="Resources\medieval3.png" />
+    <EmbeddedResource Include="Resources\medieval4.png" />
+    <EmbeddedResource Include="Resources\medieval.png" />
+    <EmbeddedResource Include="Resources\flowers.png" />
+    <EmbeddedResource Include="Resources\tree.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\hatTop.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\aura_back.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\aura_bottom.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\aura_front.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\aura_left.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\aura_right.png" />
+    <EmbeddedResource Include="Resources\Models\Sorceress\aura_top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Field of Judgement User%27s Manual.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Licenses\Field Of Judgement License.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Licenses\Gesture Description Language %28GDL%29 Sin-A Edition License.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Licenses\Jitter Physics License.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Licenses\MagicSchoolTwo  License.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Licenses\SimplexNoise for C# license.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Licenses\The Open Toolkit License.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="movements.gdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <EmbeddedResource Include="Resources\Fonts\MagicSchoolTwo.ttf" />
+    <None Include="Run calibration.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
